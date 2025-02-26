@@ -6,27 +6,82 @@ namespace Mission08.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private TaskContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(TaskContext temp)
         {
-            _logger = logger;
+            _context = temp;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var tasks = _context.Tasks
+                .Include(x => x.Categories)
+                .ToList();
+
+            return View("Quadrants", tasks);
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult AddTask()
         {
-            return View();
+            ViewBag.Categories = _context.Categories.ToList();
+
+            return View("AddTask", new Task());
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult AddTask()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (ModelState.IsValid)
+            {
+
+            }
+            else
+            {
+
+            }
+        
+        }
+
+        [HttpGet]
+        public IActionResult EditTask(int id)
+        {
+            var taskToEdit = _context.Tasks
+                .Single(x => x.TaskId = id);
+
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View("AddTask", taskToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult EditTask(Task updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Quadrants");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteTask(int id)
+        {
+            var taskToDelete = _context.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View(taskToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTask(Task task)
+        {
+            _context.Tasks.Remove(task);
+            _context.SaveChanges();
+
+            return RedirectToAction("Quadrants");
         }
     }
 }
