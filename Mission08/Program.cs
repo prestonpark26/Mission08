@@ -1,9 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Mission08.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+// Configure the database
+builder.Services.AddDbContext<TaskContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]);
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
