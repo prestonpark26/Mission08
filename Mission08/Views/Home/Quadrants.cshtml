@@ -1,0 +1,99 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+
+    @* First row with Quadrants 1 and 2 *@
+    <div class="row">
+
+        @* Quadrant 1 *@
+        <div class="col-md-6 quadrant">
+            <h2>Important - Urgent</h2>
+            @foreach (var t in Model.Where(t.Quadrant == 1 && !t.Completed))
+            {
+                <div class="task-item">
+                    <strong>Task:</strong> @t.Task <br />
+                    <strong>Category:</strong> @t.Category <br />
+                    <strong>Due Date:</strong> @t.DueDate <br />
+                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            }
+        </div>
+
+        @* Quadrant 2 *@
+        <div class="col-md-6 quadrant">
+            <h2>Important - Not Urgent</h2>
+            @foreach (var t in Model.Where(t.Quadrant == 2 && !t.Completed))
+            {
+                <div class="task-item">
+                    <strong>Task:</strong> @t.Task <br />
+                    <strong>Category:</strong> @t.Category <br />
+                    <strong>Due Date:</strong> @t.DueDate <br />
+                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    @* Second row with Quadrants 3 and 4 *@
+    <div class="row">
+
+        @* Quadrant 3 *@
+        <div class="col-md-6 quadrant">
+            <h2>Not Important - Urgent</h2>
+            @foreach (var t in Model.Where(t.Quadrant == 3 && !t.Completed))
+            {
+                <div class="task-item">
+                    <strong>Task:</strong> @t.Task <br />
+                    <strong>Category:</strong> @t.Category <br />
+                    <strong>Due Date:</strong> @t.DueDate <br />
+                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            }
+        </div>
+
+        @* Quadrant 4 *@
+        <div class="col-md-6 quadrant">
+            <h2>Not Important - Not Urgent</h2>
+            @foreach (var t in Model.Where(t.Quadrant == 4 && !t.Completed))
+            {
+                <div class="task-item">
+                    <strong>Task:</strong> @t.Task <br>
+                    <strong>Category:</strong> @t.Category <br>
+                    <strong>Due Date:</strong> @t.DueDate <br />
+                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .quadrant {
+        border: 2px solid #000;
+        padding: 10px;
+        background-color: #f4f4f4;
+        margin-bottom: 20px;
+    }
+
+    .task-item {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5px 0;
+        background-color: #fff;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+</style>
