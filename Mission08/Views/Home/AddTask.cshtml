@@ -1,0 +1,35 @@
+﻿@* @model Task *@
+
+<form method="post">
+    @*Hidden field to store TaskId *@
+    <input type="hidden" asp-for="TaskId"/>
+    <br /> 
+    <label asp-for="TaskName">Task</label>
+    <input asp-for="TaskName" required />
+    <br />
+    <label asp-for="DueDate">Due Date (YYYY-MM-DD)</label>
+    <input asp-for="DueDate" type="date"/> 
+    <br />
+    <label asp-for="Quadrant">Quadrant</label>
+    <input asp-for="Quadrant" required/>
+    <br />
+    @* Dropdown for selecting a category *@
+    @* <select asp-for="CategoryId"> *@
+    @*     <option value="">Select a Category</option> *@
+    @*     @* Populate dropdown with categories from ViewBag *@
+    @*     @foreach (Category c in ViewBag.Categories) *@
+    @*     { *@
+    @*         <option value="@c.CategoryId">@c.CategoryName</option> *@
+    @*     } *@
+    @* </select> *@
+    <br />
+    <label asp-for="Completed">Completed?</label>
+    <select asp-for="Completed">
+        <option value=""></option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    @* Submit task to save the task details *@
+    <button type="submit">Submit Task</button>
+</form>
