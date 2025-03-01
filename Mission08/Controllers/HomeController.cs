@@ -31,15 +31,19 @@ namespace Mission08.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddTask()
+        public IActionResult AddTask(Task response)
         {
             if (ModelState.IsValid)
             {
+                _context.Tasks.Add(response);
+                _context.SaveChanges();
 
+                return View("Confirmation", response);
             }
             else
             {
-
+                ViewBag.Categories = _context.Categories.ToList();
+                return View(response);
             }
         
         }
