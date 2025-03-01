@@ -9,7 +9,7 @@ public class EfTaskRepository : ITaskRepository
         _context = temp;
     }
 
-    public IQueryable<MyTask> Tasks => _context.MyTasks.AsQueryable();
+    public IQueryable<MyTask> MyTasks => _context.MyTasks.AsQueryable();
     public List<Category> Categories => _context.Categories.ToList();
 
     public void AddTask(MyTask task)
@@ -28,6 +28,11 @@ public class EfTaskRepository : ITaskRepository
     public void SaveChanges()
     {
         _context.SaveChanges(); // Ensure changes are saved
+    }
+    public void DeleteTask(MyTask task)
+    {
+        _context.MyTasks.Remove(task);
+        _context.SaveChanges();
     }
     
 }

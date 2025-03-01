@@ -13,15 +13,12 @@
     <label asp-for="Quadrant">Quadrant</label>
     <input asp-for="Quadrant" required/>
     <br />
-    @* Dropdown for selecting a category *@
-    @* <select asp-for="CategoryId"> *@
-    @*     <option value="">Select a Category</option> *@
-    @*     @* Populate dropdown with categories from ViewBag *@
-    @*     @foreach (Category c in ViewBag.Categories) *@
-    @*     { *@
-    @*         <option value="@c.CategoryId">@c.CategoryName</option> *@
-    @*     } *@
-    @* </select> *@
+    <select asp-for="CategoryId"> 
+         <option value="">Select a Category</option>
+         @foreach (Category c in ViewBag.Categories)
+         { <option value="@c.CategoryId">@c.CategoryName</option> 
+         } 
+    </select> 
     <br />
     <label asp-for="Completed">Completed?</label>
     <select asp-for="Completed">
