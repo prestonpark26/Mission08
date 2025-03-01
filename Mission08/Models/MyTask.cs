@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Mission08.Models;
 
-public class Task
+public class MyTask
 {
     [Key]
     [Required]

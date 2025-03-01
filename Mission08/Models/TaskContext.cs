@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 namespace Mission08.Models;
 
@@ -9,7 +10,7 @@ public class TaskContext : DbContext
     }
 
     //tables for task and categories
-    public DbSet<Task> Tasks { get; set; }
+    public DbSet<MyTask> MyTasks { get; set; }
     
     public DbSet<Category> Categories { get; set; }
     
