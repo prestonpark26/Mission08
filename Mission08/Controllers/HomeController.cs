@@ -18,7 +18,7 @@ namespace Mission08.Controllers
 
         public IActionResult Index()
         {
-            var tasks = _repo.TasksQueryable
+            var tasks = _repo.MyTasks
                 .Include(x => x.Category)
                 .ToList();
 
@@ -54,7 +54,7 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult EditTask(int id)
         {
-            var taskToEdit = _repo.Tasks
+            var taskToEdit = _repo.MyTasks
                 .Single(x => x.TaskId == id);
 
             ViewBag.Categories = _repo.Categories
@@ -76,7 +76,7 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult DeleteTask(int id)
         {
-            var taskToDelete = _repo.Tasks
+            var taskToDelete = _repo.MyTasks
                 .Single(x => x.TaskId == id);
 
             return View(taskToDelete);
@@ -85,7 +85,7 @@ namespace Mission08.Controllers
         [HttpPost]
         public IActionResult DeleteTask(MyTask myTask)
         {
-            _repo.Tasks.Remove(myTask);
+            _repo.DeleteTask(myTask);
             _repo.SaveChanges();
 
             return RedirectToAction("Quadrants");
