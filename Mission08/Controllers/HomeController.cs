@@ -2,21 +2,23 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Mission08.Controllers
 {
     public class HomeController : Controller
     {
-        private TaskContext _context;
+        private ITaskRepository _repo;
 
-        public HomeController(TaskContext temp)
+        public HomeController(ITaskRepository temp)
         {
-            _context = temp;
+            _repo = temp;
         }
 
         public IActionResult Index()
         {
-            var tasks = _context.MyTasks
+            var tasks = _repo.TasksQueryable
                 .Include(x => x.Category)
                 .ToList();
 
@@ -26,7 +28,7 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _repo.Categories.ToList();
 
             return View("AddTask", new MyTask());
         }
@@ -36,14 +38,14 @@ namespace Mission08.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.MyTasks.Add(response);
-                _context.SaveChanges();
+                _repo.AddTask(response);
+                _repo.SaveChanges();
 
                 return View("Confirmation", response);
             }
             else
             {
-                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Categories = _repo.Categories.ToList();
                 return View(response);
             }
         
@@ -52,10 +54,10 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult EditTask(int id)
         {
-            var taskToEdit = _context.MyTasks
+            var taskToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
 
-            ViewBag.Categories = _context.Categories
+            ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
 
@@ -65,8 +67,8 @@ namespace Mission08.Controllers
         [HttpPost]
         public IActionResult EditTask(MyTask updatedInfo)
         {
-            _context.Update(updatedInfo);
-            _context.SaveChanges();
+            _repo.Update(updatedInfo);
+            _repo.SaveChanges();
 
             return RedirectToAction("Quadrants");
         }
@@ -74,7 +76,7 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult DeleteTask(int id)
         {
-            var taskToDelete = _context.MyTasks
+            var taskToDelete = _repo.Tasks
                 .Single(x => x.TaskId == id);
 
             return View(taskToDelete);
@@ -83,8 +85,8 @@ namespace Mission08.Controllers
         [HttpPost]
         public IActionResult DeleteTask(MyTask myTask)
         {
-            _context.MyTasks.Remove(myTask);
-            _context.SaveChanges();
+            _repo.Tasks.Remove(myTask);
+            _repo.SaveChanges();
 
             return RedirectToAction("Quadrants");
         }
