@@ -15,7 +15,7 @@ namespace Mission08.Controllers
 
         public IActionResult Index()
         {
-            var tasks = _context.Tasks
+            var tasks = _context.MyTasks
                 .Include(x => x.Categories)
                 .ToList();
 
@@ -27,7 +27,7 @@ namespace Mission08.Controllers
         {
             ViewBag.Categories = _context.Categories.ToList();
 
-            return View("AddTask", new Task());
+            return View("AddTask", new MyTask());
         }
 
         [HttpPost]
@@ -35,7 +35,7 @@ namespace Mission08.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Tasks.Add(response);
+                _context.MyTasks.Add(response);
                 _context.SaveChanges();
 
                 return View("Confirmation", response);
@@ -51,7 +51,7 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult EditTask(int id)
         {
-            var taskToEdit = _context.Tasks
+            var taskToEdit = _context.MyTasks
                 .Single(x => x.TaskId = id);
 
             ViewBag.Categories = _context.Categories
@@ -62,7 +62,7 @@ namespace Mission08.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditTask(Task updatedInfo)
+        public IActionResult EditTask(MyTask updatedInfo)
         {
             _context.Update(updatedInfo);
             _context.SaveChanges();
@@ -73,16 +73,16 @@ namespace Mission08.Controllers
         [HttpGet]
         public IActionResult DeleteTask(int id)
         {
-            var taskToDelete = _context.Tasks
+            var taskToDelete = _context.MyTasks
                 .Single(x => x.TaskId == id);
 
             return View(taskToDelete);
         }
 
         [HttpPost]
-        public IActionResult DeleteTask(Task task)
+        public IActionResult DeleteTask(MyTask myTask)
         {
-            _context.Tasks.Remove(task);
+            _context.MyTasks.Remove(myTask);
             _context.SaveChanges();
 
             return RedirectToAction("Quadrants");
