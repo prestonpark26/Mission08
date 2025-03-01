@@ -30,6 +30,28 @@ namespace Mission08.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Home"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "School"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Work"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Church"
+                        });
                 });
 
             modelBuilder.Entity("Mission08.Models.MyTask", b =>

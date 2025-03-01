@@ -7,8 +7,7 @@ namespace Mission08.Models
         //this is the category class to connect to the categories table in the database
             [Key]
             public int CategoryId { get; set; }
-
-            [Required]
+                    
             public string CategoryName { get; set; }
     }
 }
