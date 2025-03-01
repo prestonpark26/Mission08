@@ -11,7 +11,7 @@ var app = builder.Build();
 // Configure the database
 builder.Services.AddDbContext<TaskContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]);
+    options.UseSqlite(builder.Configuration["ConnectionStrings:TaskConnection"]);
 });
 
 // Configure the HTTP request pipeline.
