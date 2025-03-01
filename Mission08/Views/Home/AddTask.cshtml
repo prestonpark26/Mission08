@@ -15,14 +15,13 @@
     <br />
     <label asp-for="CategoryId">Category:</label>
     @*Dropdown for selecting a category *@
-    <select asp-for="CategoryId"> 
-        <option value="">Select a Category</option> 
+    <select asp-for="CategoryId">
         @* Populate dropdown with categories from ViewBag *@
          @foreach (Category c in ViewBag.Categories) 
          { 
              <option value="@c.CategoryId">@c.CategoryName</option> 
          }
-     </select>
+    </select>
     <br />
     <label asp-for="Completed">Completed?</label>
     <select asp-for="Completed">
