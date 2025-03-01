@@ -14,14 +14,14 @@
         @* Quadrant 1 *@
         <div class="col-md-6 quadrant">
             <h2>Important - Urgent</h2>
-            @foreach (var t in Model.Where(t.Quadrant == 1 && !t.Completed))
+            @foreach (var t in Model.Where(task => task.Quadrant == 1 && !task.Completed))
             {
                 <div class="task-item">
-                    <strong>Task:</strong> @t.Task <br />
+                    <strong>Task:</strong> @t.TaskName <br />
                     <strong>Category:</strong> @t.Category <br />
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
@@ -29,14 +29,14 @@
         @* Quadrant 2 *@
         <div class="col-md-6 quadrant">
             <h2>Important - Not Urgent</h2>
-            @foreach (var t in Model.Where(t.Quadrant == 2 && !t.Completed))
+            @foreach (var t in Model.Where(task => task.Quadrant == 2 && !task.Completed))
             {
                 <div class="task-item">
-                    <strong>Task:</strong> @t.Task <br />
+                    <strong>Task:</strong> @t.TaskName <br />
                     <strong>Category:</strong> @t.Category <br />
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
@@ -49,14 +49,14 @@
         @* Quadrant 3 *@
         <div class="col-md-6 quadrant">
             <h2>Not Important - Urgent</h2>
-            @foreach (var t in Model.Where(t.Quadrant == 3 && !t.Completed))
+            @foreach (var t in Model.Where(task => task.Quadrant == 3 && !task.Completed))
             {
                 <div class="task-item">
-                    <strong>Task:</strong> @t.Task <br />
+                    <strong>Task:</strong> @t.TaskName <br />
                     <strong>Category:</strong> @t.Category <br />
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
@@ -64,14 +64,14 @@
         @* Quadrant 4 *@
         <div class="col-md-6 quadrant">
             <h2>Not Important - Not Urgent</h2>
-            @foreach (var t in Model.Where(t.Quadrant == 4 && !t.Completed))
+            @foreach (var t in Model.Where(task => task.Quadrant == 4 && !task.Completed))
             {
                 <div class="task-item">
-                    <strong>Task:</strong> @t.Task <br>
+                    <strong>Task:</strong> @t.TaskName <br>
                     <strong>Category:</strong> @t.Category <br>
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>

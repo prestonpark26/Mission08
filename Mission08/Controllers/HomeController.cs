@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission08.Models;
 
 namespace Mission08.Controllers
@@ -16,7 +17,7 @@ namespace Mission08.Controllers
         public IActionResult Index()
         {
             var tasks = _context.MyTasks
-                .Include(x => x.Categories)
+                .Include(x => x.Category)
                 .ToList();
 
             return View("Quadrants", tasks);
@@ -31,7 +32,7 @@ namespace Mission08.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddTask(Task response)
+        public IActionResult AddTask(MyTask response)
         {
             if (ModelState.IsValid)
             {
@@ -52,7 +53,7 @@ namespace Mission08.Controllers
         public IActionResult EditTask(int id)
         {
             var taskToEdit = _context.MyTasks
-                .Single(x => x.TaskId = id);
+                .Single(x => x.TaskId == id);
 
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
