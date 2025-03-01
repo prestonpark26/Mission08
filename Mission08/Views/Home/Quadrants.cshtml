@@ -18,10 +18,10 @@
             {
                 <div class="task-item">
                     <strong>Task:</strong> @t.TaskName <br />
-                    <strong>Category:</strong> @t.Category <br />
+                    <strong>Category:</strong> @t.Category.CategoryName <br />
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-controller="Home" asp-action="EditTask" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-controller="Home" asp-action="DeleteTask" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
@@ -33,10 +33,10 @@
             {
                 <div class="task-item">
                     <strong>Task:</strong> @t.TaskName <br />
-                    <strong>Category:</strong> @t.Category <br />
+                    <strong>Category:</strong> @t.Category.CategoryName <br />
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-controller="Home" asp-action="EditTask" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-controller="Home" asp-action="DeleteTask" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
@@ -53,10 +53,10 @@
             {
                 <div class="task-item">
                     <strong>Task:</strong> @t.TaskName <br />
-                    <strong>Category:</strong> @t.Category <br />
+                    <strong>Category:</strong> @t.Category.CategoryName <br />
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-controller="Home" asp-action="EditTask" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-controller="Home" asp-action="DeleteTask" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
@@ -68,10 +68,10 @@
             {
                 <div class="task-item">
                     <strong>Task:</strong> @t.TaskName <br>
-                    <strong>Category:</strong> @t.Category <br>
+                    <strong>Category:</strong> @t.Category.CategoryName <br>
                     <strong>Due Date:</strong> @t.DueDate <br />
-                    <a asp-action="Edit" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-controller="Home" asp-action="EditTask" asp-route-id="@t.TaskId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-controller="Home" asp-action="DeleteTask" asp-route-id="@t.TaskId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             }
         </div>
