@@ -15,10 +15,10 @@ public class MyTask
     public int? CategoryId { get; set; }
     
     public Category? Category { get; set; }
-    
+
     [Display(Name = "Event Date")]
     [DataType(DataType.Date)]
-    [RegularExpression(@"\d{4}-\d{2}-\d{2}", ErrorMessage = "The date format must be YYYY-MM-DD.")]
+    //[RegularExpression(@"\d{4}-\d{2}-\d{2}", ErrorMessage = "The date format must be YYYY-MM-DD.")]
     public DateTime?  DueDate { get; set; }
   
     [Required(ErrorMessage = "Quadrant is required")]

@@ -36,18 +36,18 @@ namespace Mission08.Controllers
         [HttpPost]
         public IActionResult AddTask(MyTask response)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _repo.AddTask(response);
                 _repo.SaveChanges();
 
                 return View("Confirmation", response);
-            }
-            else
-            {
-                ViewBag.Categories = _repo.Categories.ToList();
-                return View(response);
-            }
+            //}
+            //else
+            //{
+            //    ViewBag.Categories = _repo.Categories.ToList();
+            //    return View(response);
+            //}
         
         }
 
@@ -70,7 +70,7 @@ namespace Mission08.Controllers
             _repo.Update(updatedInfo);
             _repo.SaveChanges();
 
-            return RedirectToAction("Quadrants");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -88,7 +88,7 @@ namespace Mission08.Controllers
             _repo.DeleteTask(myTask);
             _repo.SaveChanges();
 
-            return RedirectToAction("Quadrants");
+            return RedirectToAction("Index");
         }
     }
 }

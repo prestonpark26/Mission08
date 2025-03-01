@@ -11,7 +11,7 @@ using Mission08.Models;
 namespace Mission08.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20250301021213_Initial")]
+    [Migration("20250301043144_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -33,6 +33,28 @@ namespace Mission08.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Home"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "School"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Work"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Church"
+                        });
                 });
 
             modelBuilder.Entity("Mission08.Models.MyTask", b =>
